@@ -1,0 +1,30 @@
+<html><head>
+    <link href="/js/c3/c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+<script src="/js/d3/d3.min.js" charset="utf-8"></script>
+<script src="/js/c3/c3.min.js"></script>
+
+</head>
+<body>
+<div id="chart"></div>
+
+<script>
+var chart=c3.generate({bindto:"#chart", data:{json:[{
+  
+  table_name: 'a2',
+  data1: 15,
+  time: 1616239724229,
+  __v: 0
+},{
+ 
+  table_name: 'a2',
+  data1: 151,
+  time: 1616239749838,
+  __v: 0
+}],keys:{x:'time', value:["data1"],}},axis:{x:{type:"timeseries", localtime:true,tick:{format:"%Y-%m-%d %H:%M:%S"}}}});
+</script>
+</body>
+
+
+</html>

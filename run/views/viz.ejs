@@ -1,0 +1,60 @@
+<head>
+    <link href="/js/c3/c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+<script src="/js/d3/d3.min.js" charset="utf-8"></script>
+<script src="/js/c3/c3.min.js"></script>
+    </head>
+    <body onload="start()">
+        <div id= "inp"style="display:none"><%=table%></div>
+        
+        <div id= "inp2"style="display:none"><%=f%></div>
+        <div id="chart"></div>
+        <script>
+            function start(){
+                var a= document.getElementById("inp").innerText;
+                var b=document.getElementById("inp2").innerText;
+                var k='data1';
+                
+                for(i=2;i<=parseInt(b);i++){
+                    k+=',data'+i;
+
+                }
+                console.log(k);
+            var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+        json:JSON.parse(xhttp.responseText),
+        keys:{
+            x: 'time',
+
+            value:['data1','data2','data3','data4','data5','data6','data7','data8','data9','data10','data11','data12','data13','data14','data15'],
+            
+        }
+    },
+    zoom:{
+        enabled:true
+    },
+    axis:{
+        x:{type: 'timeseries',
+            // if true, treat x value as localtime (Default)
+            // if false, convert to UTC internally
+            localtime: true,
+            tick: {
+                format: '%Y-%m-%d %H:%M:%S'
+
+        }
+    }      }
+});
+    }
+};
+xhttp.open("GET", "vizdata?t="+a+"&l="+b, true);
+xhttp.send();
+
+            }
+            </script>
+    </body>

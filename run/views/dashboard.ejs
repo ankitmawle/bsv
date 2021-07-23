@@ -1,0 +1,48 @@
+
+<p style="color:azure">  Welcome <%= user.name %> to Deltiin Cloud </p>
+<section class="grid margin-bottom-20">
+    <div class="m-12 l-7 center background-white text-center">
+        <div class="s-12 padding-1x background-white text-center"> 
+<header class="grid">
+    <!-- Top Navigation -->
+    <nav class="s-12 grid background-none background-primary-hightlight">
+       <!-- logo -->
+      
+       <div class="top-nav s-12 l-9"> 
+          <ul class="top-ul left chevron">
+            <li><a onload="start()" href="/dashboard">List of Tables</a></li>
+            <li><a onclick="add()">Add New Tables</a></li>
+            <li><a onclick="api()">API Management</a></li>
+            <li><a onclick="ex()">Example API codes</a></li>
+
+          </ul>
+       </div>
+    </nav>
+  </header>
+
+
+
+
+  </div>
+  <iframe  id="iframe" style="display:block; width:100%;height:100%;" src="users/tables"></iframe></div>
+ 
+  </section>
+ 
+  <script>
+document.getElementById("iframe").onload = function() {start()};
+
+document.getElementById("logout").addEventListener("load", start);
+function add(){
+    document.getElementById("iframe").src="users/add"
+}
+function api(){
+  document.getElementById("iframe").src="users/api"
+}
+  function start(){
+    document.getElementById("logout").innerText="LOGOUT";
+    document.getElementById("logout").href="/users/logout";
+}
+  function ex(){
+    document.getElementById("iframe").src="/users/examples";
+  }
+</script>
